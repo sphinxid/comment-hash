@@ -17,6 +17,6 @@ To install:
 The plugin will automatically:
 
 - Generate a secure random 64-character secret key on installation
-- Set default time window to 7200 seconds (2 hours)
+- Set default time window to 180 seconds
 - Add necessary JavaScript and CSS to comment forms
 - Protect all comment submissions with proof-of-work verification in order to decrease spams

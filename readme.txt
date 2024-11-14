@@ -1,3 +1,18 @@
+=== Comment Hash ===
+Tags: anti spam, comment, captcha
+Contributors: sphinxid
+Stable tag: 1.0.1
+Requires at least: 6.3
+Tested up to: 6.7
+Requires PHP: 7.4
+License: GPLv2 or later
+
+Protect your WordPress comments from spam by requiring proof-of-work. This innovative solution makes commenters' devices solve a small computational puzzle before posting, effectively preventing automated spam while maintaining a smooth user experience. No captchas, no annoying verifications - just intelligent spam prevention.
+
+== Description ==
+
+Protect your WordPress comments from spam by requiring proof-of-work. This innovative solution makes commenters' devices solve a small computational puzzle before posting, effectively preventing automated spam while maintaining a smooth user experience. No captchas, no annoying verifications - just intelligent spam prevention.
+
 This completes the WordPress plugin implementation. The plugin provides:
 
 - A proof-of-work system for comment submission using SHA-256

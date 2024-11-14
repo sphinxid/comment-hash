@@ -5,7 +5,7 @@
  * Description: Protect your WordPress comments from spam by requiring proof-of-work. This innovative solution makes commenters' devices solve a small computational puzzle before posting, effectively preventing automated spam while maintaining a smooth user experience. No captchas, no annoying verifications - just intelligent spam prevention.
  * Version: 1.0.1
  * Author: sphinxid
- * Author URI: https://github.com/sphinxid/comment-hash
+ * Author URI: https://firmangautama.medium.com/
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: comment-hash
@@ -159,12 +159,12 @@ class CommentHash {
             return $commentdata;
         }
 
-        $this->debug_log('Verifying comment submission POST data:', $_POST);
+        $this->debug_log('Verifying comment submission POST data:', wp_unslash($_POST));
 
-        $nonce = isset($_POST['comment_pow_nonce']) ? sanitize_text_field($_POST['comment_pow_nonce']) : '';
-        $challenge = isset($_POST['comment_pow_challenge']) ? sanitize_text_field($_POST['comment_pow_challenge']) : '';
-        $timestamp = isset($_POST['comment_pow_timestamp']) ? sanitize_text_field($_POST['comment_pow_timestamp']) : '';
-        $digest = isset($_POST['comment_pow_digest']) ? sanitize_text_field($_POST['comment_pow_digest']) : '';
+        $nonce = isset($_POST['comment_pow_nonce']) ? sanitize_text_field(wp_unslash($_POST['comment_pow_nonce'])) : '';
+        $challenge = isset($_POST['comment_pow_challenge']) ? sanitize_text_field(wp_unslash($_POST['comment_pow_challenge'])) : '';
+        $timestamp = isset($_POST['comment_pow_timestamp']) ? sanitize_text_field(wp_unslash($_POST['comment_pow_timestamp'])) : '';
+        $digest = isset($_POST['comment_pow_digest']) ? sanitize_text_field(wp_unslash($_POST['comment_pow_digest'])) : '';
 
         if (empty($nonce) || empty($challenge) || empty($timestamp) || empty($digest)) {
             $this->debug_log('Missing required POW fields');
@@ -191,7 +191,7 @@ class CommentHash {
 
         // Verify digest
         $secret_key = get_option('comment_hash_secret_key');
-        $unique_str = isset($_POST['comment_pow_unique_str']) ? sanitize_text_field($_POST['comment_pow_unique_str']) : '';
+        $unique_str = isset($_POST['comment_pow_unique_str']) ? sanitize_text_field(wp_unslash($_POST['comment_pow_unique_str'])) : '';
 
         // Calculate digest with the same data used in get_comment_challenge
         $data = $challenge . $unique_str . $timestamp;

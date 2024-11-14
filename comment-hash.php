@@ -81,7 +81,7 @@ class CommentHash {
         }
 
         if (!get_option('comment_hash_time_diff')) {
-            update_option('comment_hash_time_diff', 7200);
+            update_option('comment_hash_time_diff', 180);
         }
     }
 
@@ -174,7 +174,7 @@ class CommentHash {
         // Verify timestamp
         $timestamp_dt = new DateTime($timestamp, new DateTimeZone('UTC'));
         $current_dt = new DateTime('now', new DateTimeZone('UTC'));
-        $time_diff = get_option('comment_hash_time_diff', 7200);
+        $time_diff = get_option('comment_hash_time_diff', 180);
 
         $actual_time_diff = $current_dt->getTimestamp() - $timestamp_dt->getTimestamp();
         $this->debug_log('Time difference check:', array(
@@ -272,8 +272,8 @@ class CommentHash {
                     <tr>
                         <th scope="row">Time Difference (seconds)</th>
                         <td>
-                            <input type="number" name="comment_hash_time_diff" value="<?php echo esc_attr(get_option('comment_hash_time_diff', 7200)); ?>" min="300" max="86400" class="regular-text" />
-                            <p class="description">Maximum time allowed between challenge generation and comment submission (300-86400 seconds).</p>
+                            <input type="number" name="comment_hash_time_diff" value="<?php echo esc_attr(get_option('comment_hash_time_diff', 180)); ?>" min="120" max="86400" class="regular-text" />
+                            <p class="description">Maximum time allowed between challenge generation and comment submission (120-86400 seconds).</p>
                         </td>
                     </tr>
                     <tr>

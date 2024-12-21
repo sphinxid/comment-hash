@@ -1,7 +1,7 @@
 === Comment Hash ===
 Tags: anti spam, comment, captcha
 Contributors: sphinxid
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 Requires at least: 6.3
 Tested up to: 6.7
 Requires PHP: 7.4
